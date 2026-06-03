@@ -6,9 +6,39 @@ StatusWatch es una aplicación web ligera para monitorear la disponibilidad y el
 
 ---
 
-## Problema que resuelve
+## Changelog
 
-Los equipos pequeños y medianos se enteran de las caídas por reportes de sus propios usuarios. Las herramientas empresariales (Datadog, PagerDuty) son costosas y sobredimensionadas; las gratuitas (UptimeRobot) limitan la frecuencia de verificación y almacenan datos en servidores de terceros. StatusWatch cubre ese vacío con una solución autohospedada, minimalista y lista para desplegar en menos de 10 minutos con Docker.
+### [v0.3.0] - Módulo 5 (actual)
+#### Agregado
+- Diseño de esquema de base de datos con PostgreSQL y Prisma ORM
+- Definición de modelos: `Service`, `PingResult`, `Incident`, `IncidentUpdate`, `User`
+- Configuración inicial de variables de entorno para conexión a base de datos
+- Estructura de carpetas del proyecto separada por capas (UI, API, DB)
+
+#### Cambiado
+- README actualizado con sección de changelog
+- Wireframes refinados para reflejar flujos de datos reales por pantalla
+
+---
+
+### [v0.2.0] - Módulo 4
+#### Agregado
+- Wireframes digitales de las 4 pantallas principales en Figma
+- Documento de arquitectura técnica (stack, capas, flujo de datos)
+- Definición de endpoints REST del backend
+
+#### Cambiado
+- Borrador del proyecto actualizado con sección de interfaz de administrador
+- Descripción detallada de funcionalidades por módulo
+
+---
+
+### [v0.1.0] - Módulo 3
+#### Agregado
+- Borrador inicial del proyecto (StatusWatch_Borrador.docx)
+- Descripción del problema, objetivos y plataforma
+- Wireframes en texto plano de las 4 pantallas principales
+- README inicial del repositorio
 
 ---
 
@@ -73,7 +103,7 @@ La aplicación estará disponible en `http://localhost:3000`.
 
 ## Variables de entorno
 
-Copia `.env.example` a `.env` y completa los valores. El repositorio **nunca** incluye credenciales — toda configuración sensible se gestiona exclusivamente mediante variables de entorno.
+Copia `.env.example` a `.env` y completa los valores. El repositorio **nunca** incluye credenciales.
 
 ```env
 DATABASE_URL=
