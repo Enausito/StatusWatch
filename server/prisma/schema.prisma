@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Service {
+  id           Int       @id @default(autoincrement())
+  name         String
+  url          String
+  status       String    @default("ACTIVE")
+  uptime       Float     @default(100)
+  responseTime Int       @default(0)
+  interval     Int       @default(5)
+  createdAt    DateTime  @default(now())
+  logs         PingLog[]
+}
+
+model PingLog {
+  id           Int      @id @default(autoincrement())
+  serviceId    Int
+  service      Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  responseTime Int
+  ok           Boolean
+  checkedAt    DateTime @default(now())
+}
+
+model Incident {
+  id        Int      @id @default(autoincrement())
+  title     String
+  severity  String   @default("MINOR")
+  status    String   @default("INVESTIGATING")
+  message   String   @default("")
+  createdAt DateTime @default(now())
+}
